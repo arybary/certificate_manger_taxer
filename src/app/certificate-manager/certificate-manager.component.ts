@@ -1,34 +1,23 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { CertificateFacade } from './state/certificate.facade';
+import { Observable } from 'rxjs';
+import { Certificate } from './models/certificate';
 
 @Component({
   selector: 'app-certificate-manager',
   templateUrl: './certificate-manager.component.html',
-  styleUrl: './certificate-manager.component.scss'
+  styleUrl: './certificate-manager.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CertificateManagerComponent {
+export class CertificateManagerComponent implements OnInit {
+  public readonly certificates$: Observable<Certificate[]> = this.certificateFacade.certificates$;
 
-  onDragOver(event: Event) {
-    event.preventDefault();
+  constructor(private readonly certificateFacade: CertificateFacade) { }
+
+
+
+  ngOnInit(): void {
+    this.certificateFacade.loadCertificates();
   }
 
-  onDragEnter(event: Event) {
-    event.preventDefault();
-  }
-
-  onDragLeave(event: Event) {
-    event.preventDefault();
-  }
-
-  onDrop(event: DragEvent) {
-    event.preventDefault();
-    const files = event.dataTransfer?.files;
-    if (files) {
-      this.handleFiles(files);
-    }
-  }
-
-  handleFiles(files: FileList) {
-    // Handle uploaded files here
-    console.log(files);
-  }
 }

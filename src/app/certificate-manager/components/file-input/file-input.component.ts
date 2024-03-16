@@ -1,12 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 
-export interface IFileContent {
-  commonName: string,
-  issuerCN: string,
-  validFrom: Date,
-  validTo: Date,
-}
+
 
 @Component({
   selector: 'file-input',
@@ -16,14 +11,13 @@ export interface IFileContent {
 export class FileInputComponent {
 
 
-  @Output() fileChange = new EventEmitter<IFileContent>()
+  @Output() fileChange = new EventEmitter<File>()
 
-  public fileContent?: IFileContent;
+
   public isDragging: boolean = false;
 
   public stopDrag(event: Event): void {
-    this.isDragging = false;
-    event.preventDefault();
+    this.isDragging = false; event.preventDefault();
     event.stopPropagation();
   }
 
@@ -43,7 +37,8 @@ export class FileInputComponent {
     if (!dt) throw 'dataTransfer дорівнює null';
 
     if (dt.items) {
-      const item = dt.items[0]; console.log(dt.items[0])
+      const item = dt.items[0]; console.log(dt.items[0]);
+
       if (!item) throw 'Відсутній файл в items у dataTransfer при події onDrop';
       if (item.kind !== 'file') throw 'В items у dataTransfer знаходиться строка, а не файл';
       file = item.getAsFile() as File;
@@ -54,7 +49,8 @@ export class FileInputComponent {
     }
 
     if (file) {
-      this.readCertificate(file);
+      this.fileChange.emit(file)
+
     }
 
   }
@@ -65,29 +61,10 @@ export class FileInputComponent {
     const file = files[0];
 
     if (file) {
-      this.readCertificate(file);
+      this.fileChange.emit(file)
+
     }
   }
-
-  private readCertificate(file: File): void {
-    const reader = new FileReader();
-
-    reader.readAsArrayBuffer(file);
-
-    reader.onload = (e) => {
-      const target = e.target;
-      if (!target) throw 'Відсутній e.target під час reader.onload';
-      const content = target.result;
-      if (!content) throw 'Відсутній result під час reader.onload';
-
-
-    };
-
-  }
-
-
-
-
 
 
 
