@@ -39,6 +39,5 @@ export class CertificateManagerComponent implements OnInit {
   }
   ngOnInit(): void {
     this.certificateFacade.loadCertificates();
-    console.log(this.certificates$);
   }
 }
