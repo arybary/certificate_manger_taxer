@@ -1,4 +1,8 @@
 # Certificate
+[stackblitz](https://stackblitz.com/~/github.com/arybary/certificate_manger_taxer)
+[Deploy Versel](https://certificate-manger-taxer.vercel.app/)
+
+#[TEST](https://drive.google.com/file/d/1q96psBIx_dIsufJnypSzn5gdwEDHHJB_/view?usp=sharing)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
 
