@@ -8,7 +8,6 @@ import { StoreModule } from '@ngrx/store';
 import { appRedusers, metaReducers } from './redusers';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { CertificateInfoComponent } from './certificate-manager/components/certificate-info/certificate-info.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +18,6 @@ import { CertificateInfoComponent } from './certificate-manager/components/certi
     StoreRouterConnectingModule.forRoot(),
     StoreModule.forRoot(appRedusers, { metaReducers }),
     EffectsModule.forRoot(),
-
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
 

@@ -1,6 +1,8 @@
-<div  class="cert-info">
-  <p><Strong>Common Name:</Strong> {{certificateInfo?.commonName}}</p>
-  <p><Strong>Issuer CN:</Strong> {{certificateInfo?.issuerName}}</p>
-  <p><Strong>Valid From:</Strong> {{certificateInfo?.validFrom}}</p>
-  <p><Strong>Valid To:</Strong> {{certificateInfo?.validTo}}</p>
+@if(certificateInfo){
+<div class="cert-info">
+  <p><Strong>Common Name:</Strong> {{ certificateInfo.commonName }}</p>
+  <p><Strong>Issuer CN:</Strong> {{ certificateInfo.issuerName }}</p>
+  <p><Strong>Valid From:</Strong> {{ certificateInfo.validFrom }}</p>
+  <p><Strong>Valid To:</Strong> {{ certificateInfo.validTo }}</p>
 </div>
+}

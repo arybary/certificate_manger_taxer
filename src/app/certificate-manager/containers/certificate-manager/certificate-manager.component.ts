@@ -15,6 +15,9 @@ export class CertificateManagerComponent implements OnInit {
   public readonly certificates$: Observable<CertificateData[]> =
     this.certificateFacade.certificates$;
 
+  public readonly selectedCertificate$: Observable<CertificateData | null | undefined> =
+    this.certificateFacade.selectedCertificate$;
+
   public readonly selectedCertificateId$: Observable<number | null> =
     this.certificateFacade.selectedCertificateId$;
 
@@ -23,11 +26,17 @@ export class CertificateManagerComponent implements OnInit {
   @Output() selectedCertificateChange = new EventEmitter();
 
   public onSelectedCertificateChange(id: number) {
-    console.log(id)
+    this.isAddCertificate = true;
     this.certificateFacade.selectCertificate(id)
   }
-  public onClick() {
+  public onClickButton() {
     this.isAddCertificate = !this.isAddCertificate;
+  }
+  public onFileChange(file: File): void {
+    this.certificateFacade.addCertificate(file);
+    this.certificateFacade.loadCertificates();
+    this.isAddCertificate = true
+
   }
   ngOnInit(): void {
     this.certificateFacade.loadCertificates();

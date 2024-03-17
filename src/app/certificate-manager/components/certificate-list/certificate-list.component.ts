@@ -5,16 +5,15 @@ import { CertificateData } from '../../models/certificate';
   selector: 'certificate-list',
   templateUrl: './certificate-list.component.html',
   styleUrl: './certificate-list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CertificateListComponent {
   @Input() certificates: CertificateData[] = [];
+  @Input() isAddCertificate?: boolean;
   @Input() selectedCertificateId?: number | null;
   @Output() selectedCertificateChange = new EventEmitter();
 
   public onChange(id: number) {
-
-
 
     this.selectedCertificateChange.emit(id);
   }

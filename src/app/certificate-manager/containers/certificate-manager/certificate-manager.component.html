@@ -1,15 +1,17 @@
 <div class="certificate">
 	<div class="certificate-list">
-		<button class="certificate-list__button" (click)="onClick()">
+		<button class="certificate-list__button" (click)="onClickButton()">
 			{{ isAddCertificate ? 'Додати' : 'Назад' }}
 		</button>
 		@if (certificates$ | async; as certificates) {
 
 		<certificate-list
+			[isAddCertificate]="isAddCertificate"
 			[certificates]="certificates"
 			[selectedCertificateId]="selectedCertificateId$ | async"
 			(selectedCertificateChange)="onSelectedCertificateChange($event)"
 		/>}
 	</div>
-	<input-and-info-certificate [isAddCertificate]="isAddCertificate"/>
+  @if(isAddCertificate){<certificate-info [certificateInfo]="selectedCertificate$ | async" />}
+  @else{<cerificate-input (fileChange)="onFileChange($event)" />}
 </div>
