@@ -1,4 +1,5 @@
-export interface Certificate {
+export interface CertificateData {
+  id: number;
   commonName: string;
   issuerName: string;
   validFrom: string;

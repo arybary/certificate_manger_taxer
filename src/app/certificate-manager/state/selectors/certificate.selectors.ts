@@ -1,16 +1,20 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { CertificateState, certificateAdapter } from '../redusers/certificate.redusers';
+import { createFeature, createSelector } from '@ngrx/store';
 import { KEY_FOR_CERTIFICATES } from '../../constans/key';
+import { certificateAdapter, certificateReducer } from '../redusers/certificate.redusers';
 
-const getCertificateState = createFeatureSelector<CertificateState>(KEY_FOR_CERTIFICATES);
-
-const {
-  selectAll
-} = certificateAdapter.getSelectors();
-
-export const selectAllCertificates = createSelector(
-  getCertificateState,
-  selectAll
-);
-
-
+export const cetrificateFeature = createFeature({
+  name: KEY_FOR_CERTIFICATES,
+  reducer: certificateReducer,
+  extraSelectors: ({ selectCertifictesState, selectEntities, selectSelectedCertificateId }) => ({
+    ...certificateAdapter.getSelectors(selectCertifictesState),
+    selectIsCertificateSelected: createSelector(
+      selectSelectedCertificateId,
+      (selectedId) => selectedId !== null
+    ),
+    selectSelectedCertificate: createSelector(
+      selectSelectedCertificateId,
+      selectEntities,
+      (selectedId, entities) => selectedId ? entities[selectedId] : null
+    ),
+  }),
+});

@@ -1,0 +1,10 @@
+@if (certificates.length === 0) {
+<p class="cert-list-empty">Немає жодного сертифікату</p>
+} @else {<ul class="cert-list">
+  @for (certificate of certificates; track certificate;) {
+  <li class="cert-list__item" [ngClass]="selectedCertificateId ===certificate.id  ? 'selected' : ''"
+    (click)="onChange(certificate.id )">
+    {{certificate.commonName}}
+  </li>
+  }
+</ul>}

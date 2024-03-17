@@ -8,15 +8,10 @@ import { StoreModule } from '@ngrx/store';
 import { appRedusers, metaReducers } from './redusers';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { InputAndInfoCertificateComponent } from './certificate-manager/containers/input-and-info-certificate/input-and-info-certificate.component';
-
+import { CertificateInfoComponent } from './certificate-manager/components/certificate-info/certificate-info.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-
-
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,8 +23,6 @@ import { InputAndInfoCertificateComponent } from './certificate-manager/containe
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
 
-
-
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

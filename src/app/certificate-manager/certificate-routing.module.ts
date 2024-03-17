@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CertificateManagerComponent } from './certificate-manager.component';
+import { CertificateManagerComponent } from './containers/certificate-manager/certificate-manager.component';
+
 
 const routes: Routes = [
   {

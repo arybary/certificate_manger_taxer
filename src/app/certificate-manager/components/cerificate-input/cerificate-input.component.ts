@@ -1,14 +1,13 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-
-
-
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'file-input',
-  templateUrl: './file-input.component.html',
-  styleUrl: './file-input.component.scss'
+  selector: 'cerificate-input',
+  templateUrl: './cerificate-input.component.html',
+  styleUrl: './cerificate-input.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FileInputComponent {
+export class CerificateInputComponent {
+
 
 
   @Output() fileChange = new EventEmitter<File>()
@@ -65,7 +64,4 @@ export class FileInputComponent {
 
     }
   }
-
-
-
 }

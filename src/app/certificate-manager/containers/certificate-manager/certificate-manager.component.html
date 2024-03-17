@@ -1,0 +1,15 @@
+<div class="certificate">
+	<div class="certificate-list">
+		<button class="certificate-list__button" (click)="onClick()">
+			{{ isAddCertificate ? 'Додати' : 'Назад' }}
+		</button>
+		@if (certificates$ | async; as certificates) {
+
+		<certificate-list
+			[certificates]="certificates"
+			[selectedCertificateId]="selectedCertificateId$ | async"
+			(selectedCertificateChange)="onSelectedCertificateChange($event)"
+		/>}
+	</div>
+	<input-and-info-certificate [isAddCertificate]="isAddCertificate"/>
+</div>

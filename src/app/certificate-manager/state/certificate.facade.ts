@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
 import * as CertificateActions from './actions/certificate.actions';
-import * as CertificateFeature from './selectors/certificate.selectors';
-import { Certificate } from '../models/certificate';
-
+import { CertificateData } from '../models/certificate';
 import { CertificateState } from './redusers/certificate.redusers';
-
+import { cetrificateFeature } from './selectors/certificate.selectors';
 
 @Injectable()
 export class CertificateFacade {
-  public readonly certificates$: Observable<Certificate[]> = this.store.pipe(
-    select(CertificateFeature.selectAllCertificates)
+  public readonly certificates$: Observable<CertificateData[]> = this.store.pipe(
+    select(cetrificateFeature.selectAll)
   );
+  public readonly selectedCertificate$: Observable<CertificateData | null | undefined> =
+    this.store.pipe(select(cetrificateFeature.selectSelectedCertificate));
+  public readonly selectedCertificateId$: Observable<number | null> =
+    this.store.pipe(select(cetrificateFeature.selectSelectedCertificateId));
 
   constructor(private readonly store: Store<CertificateState>) { }
 
@@ -22,8 +23,12 @@ export class CertificateFacade {
   }
 
   public addCertificate(certificateData: File): void {
+    this.store.dispatch(CertificateActions.addCertificate({ certificateData }));
+  }
+
+  public selectCertificate(id: number): void {
     this.store.dispatch(
-      CertificateActions.addCertificate({ certificateData })
+      CertificateActions.certificateAdded.selectCertificate({ certificateId: id })
     );
   }
 }
