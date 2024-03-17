@@ -14,7 +14,6 @@ export class CertificateListComponent {
   @Output() selectedCertificateChange = new EventEmitter();
 
   public onChange(id: number) {
-
     this.selectedCertificateChange.emit(id);
   }
 }

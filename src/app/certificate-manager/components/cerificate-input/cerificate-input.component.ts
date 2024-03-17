@@ -4,20 +4,16 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
   selector: 'cerificate-input',
   templateUrl: './cerificate-input.component.html',
   styleUrl: './cerificate-input.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CerificateInputComponent {
-
-
-
-  @Output() fileChange = new EventEmitter<File>()
-
-
-  public isDragging: boolean = false;
+  @Output() fileChange = new EventEmitter<File>();
+  public isDragging = false;
 
   public stopDrag(event: Event): void {
-    this.isDragging = false; event.preventDefault();
+    event.preventDefault();
     event.stopPropagation();
+    this.isDragging = false;
   }
 
   public onDragOver(event: Event): void {
@@ -27,41 +23,21 @@ export class CerificateInputComponent {
 
   public onDrop(event: DragEvent): void {
     event.preventDefault();
-
     this.isDragging = false;
-
     const dt = event.dataTransfer;
-    let file: File;
+    if (!dt) throw new Error('dataTransfer is null');
 
-    if (!dt) throw 'dataTransfer дорівнює null';
+    const file = dt.items ? dt.items[0]?.getAsFile() : dt.files[0];
+    if (!file) throw new Error('No file found in dataTransfer');
 
-    if (dt.items) {
-      const item = dt.items[0]; console.log(dt.items[0]);
-
-      if (!item) throw 'Відсутній файл в items у dataTransfer при події onDrop';
-      if (item.kind !== 'file') throw 'В items у dataTransfer знаходиться строка, а не файл';
-      file = item.getAsFile() as File;
-    } else {
-      const item = dt.files[0];
-      if (!item) throw 'Відсутній файл в files у dataTransfer при події onDrop';
-      file = item;
-    }
-
-    if (file) {
-      this.fileChange.emit(file)
-
-    }
-
+    this.fileChange.emit(file);
   }
 
   public onFileChange(event: Event): void {
     const target = event.target as HTMLInputElement;
-    const files = target.files as FileList;
-    const file = files[0];
-
+    const file = (target.files && target.files[0]) || null;
     if (file) {
-      this.fileChange.emit(file)
-
+      this.fileChange.emit(file);
     }
   }
 }

@@ -1,5 +1,5 @@
 import { createFeature, createSelector } from '@ngrx/store';
-import { KEY_FOR_CERTIFICATES } from '../../constans/key';
+import { KEY_FOR_CERTIFICATES } from '../../constans';
 import { certificateAdapter, certificateReducer } from '../redusers/certificate.redusers';
 
 export const cetrificateFeature = createFeature({
@@ -14,7 +14,7 @@ export const cetrificateFeature = createFeature({
     selectSelectedCertificate: createSelector(
       selectSelectedCertificateId,
       selectEntities,
-      (selectedId, entities) => selectedId ? entities[selectedId] : null
+      (selectedId, entities) => (selectedId ? entities[selectedId] : null)
     ),
   }),
 });

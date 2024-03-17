@@ -27,7 +27,7 @@ export class CertificateManagerComponent implements OnInit {
 
   public onSelectedCertificateChange(id: number) {
     this.isAddCertificate = true;
-    this.certificateFacade.selectCertificate(id)
+    this.certificateFacade.selectCertificate(id);
   }
   public onClickButton() {
     this.isAddCertificate = !this.isAddCertificate;
@@ -35,8 +35,7 @@ export class CertificateManagerComponent implements OnInit {
   public onFileChange(file: File): void {
     this.certificateFacade.addCertificate(file);
     this.certificateFacade.loadCertificates();
-    this.isAddCertificate = true
-
+    this.isAddCertificate = true;
   }
   ngOnInit(): void {
     this.certificateFacade.loadCertificates();

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CertificateManagerComponent } from './containers/certificate-manager/certificate-manager.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -14,5 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class CertificateRoutingModule {
-}
+export class CertificateRoutingModule { }

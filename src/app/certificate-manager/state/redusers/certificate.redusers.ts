@@ -8,8 +8,6 @@ export interface CertificateState extends EntityState<CertificateData> {
 }
 export const certificateAdapter = createEntityAdapter<CertificateData>();
 
-
-
 export const initialCertificateState: CertificateState = certificateAdapter.getInitialState({
   selectedCertificateId: null,
 });
@@ -19,7 +17,8 @@ export const certificateReducer = createReducer(
   on(CertificateActions.certificatesLoaded, (state, { certificates }) =>
     certificateAdapter.setAll(certificates, state)
   ),
-  on(CertificateActions.certificateAdded.addCertificate, (state, { certificate }) => { console.log(certificate); return certificateAdapter.addOne(certificate, state) }
+  on(CertificateActions.certificateAdded.addCertificate, (state, { certificate }) =>
+    certificateAdapter.addOne(certificate, state)
   ),
   on(CertificateActions.certificateAdded.selectCertificate, (state, { certificateId }) => ({
     ...state,

@@ -1,30 +1,27 @@
 .certificate-input {
-  display: flex;
-  box-sizing: border-box;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5em;
-  width: 100%;
-  height: 100%;
-  border: 2px dotted black;
-  font-size: 24px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 30rem;
+	height: 20rem;
+	border: 0.1em dotted black;
+	font-size: 1.3rem;
 
-  &__title {
-      text-align: center;
-  }
+	&__title {
+		text-align: center;
+	}
 
-  &__btn {
-      background-color: buttonface;
-      padding: 0.5em 2em;
-      border: 2px solid black;
-      border-radius: 0.3rem;
-      cursor: pointer;
-      text-align: center;
-  }
+	&__btn {
+		padding: 0.5rem 2rem;
+		border: 0.1rem solid black;
+		border-radius: 0.3rem;
+		cursor: pointer;
+		text-align: center;
+	}
 
-  &-hover {
-      background: rgba(0,0,0,0.1);
-      border: 2px solid rgba(0,0,0,0.5)
-  }
+	&-hover {
+		background: rgba(0, 0, 0, 0.226);
+		border: 0.1rem solid rgba(0, 0, 0, 0.5);
+	}
 }

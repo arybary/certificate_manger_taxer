@@ -1,21 +1,16 @@
-.cert-info {
-  box-sizing: border-box;
-  padding: 1.5em;
-  width: 100%;
-  height: 100%;
-  border: 2px solid black;
-  font-size: 24px;
+.certificate-info {
+	width: 30rem;
+  height: 20rem;
+	padding: 2rem;
+	font-size: 1.3rem;
+	border: 0.1rem solid black;
+	margin: 0;
 
-  p {
-      display: block;
-      margin: 0;
-      line-height: 1.5em;
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-      text-wrap: wrap;
-      white-space: pre-wrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-  }
+	&__item {
+		position: relative;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 100%;
+	}
 }

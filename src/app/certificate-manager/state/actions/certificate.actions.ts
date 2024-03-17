@@ -1,12 +1,17 @@
-
 import { createAction, createActionGroup, props } from '@ngrx/store';
 import { CertificateData } from '../../models/certificate';
 
-
 export const loadCertificates = createAction('[Certificate] Load Certificates');
-export const certificatesLoaded = createAction('[Certificate] Certificates Loaded', props<{ certificates: CertificateData[] }>());
+export const certificatesLoaded = createAction(
+  '[Certificate] Certificates Loaded',
+  props<{ certificates: CertificateData[] }>()
+);
 
-export const addCertificate = createAction('[Certificate] Add Certificate', props<{ certificateData: File }>());
+export const addCertificate = createAction(
+  '[Certificate] Add Certificate',
+  props<{ certificateData: File }>()
+);
+
 export const certificateAdded = createActionGroup({
   source: '[Certificate] Certificate Added',
   events: {
@@ -14,4 +19,3 @@ export const certificateAdded = createActionGroup({
     selectCertificate: props<{ certificateId: number }>(),
   },
 });
-

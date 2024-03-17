@@ -11,10 +11,13 @@ export class CertificateFacade {
   public readonly certificates$: Observable<CertificateData[]> = this.store.pipe(
     select(cetrificateFeature.selectAll)
   );
+
   public readonly selectedCertificate$: Observable<CertificateData | null | undefined> =
     this.store.pipe(select(cetrificateFeature.selectSelectedCertificate));
-  public readonly selectedCertificateId$: Observable<number | null> =
-    this.store.pipe(select(cetrificateFeature.selectSelectedCertificateId));
+
+  public readonly selectedCertificateId$: Observable<number | null> = this.store.pipe(
+    select(cetrificateFeature.selectSelectedCertificateId)
+  );
 
   constructor(private readonly store: Store<CertificateState>) { }
 

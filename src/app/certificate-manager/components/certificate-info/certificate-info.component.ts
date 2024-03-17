@@ -5,9 +5,8 @@ import { CertificateData } from '../../models/certificate';
   selector: 'certificate-info',
   templateUrl: './certificate-info.component.html',
   styleUrl: './certificate-info.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CertificateInfoComponent {
   @Input() certificateInfo?: CertificateData | null | undefined;
-
 }
