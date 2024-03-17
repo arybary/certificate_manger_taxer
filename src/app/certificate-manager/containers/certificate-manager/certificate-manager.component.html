@@ -11,7 +11,8 @@
 			[selectedCertificateId]="selectedCertificateId$ | async"
 			(selectedCertificateChange)="onSelectedCertificateChange($event)"
 		/>}
-	</div>
+	</div>	<div class="certificate-input-info">
   @if(isAddCertificate){<certificate-info [certificateInfo]="selectedCertificate$ | async" />}
   @else{<cerificate-input (fileChange)="onFileChange($event)" />}
+</div>
 </div>

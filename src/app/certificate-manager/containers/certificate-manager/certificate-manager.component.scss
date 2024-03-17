@@ -8,7 +8,7 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  width: 35vw;
+  width: 50%;
 
   &__button {
       cursor: pointer;
@@ -16,4 +16,7 @@
       padding: 10px 40px;
       border-radius: 5px;
   }
+}
+&-input-info{
+  width: 50%;
 }}
